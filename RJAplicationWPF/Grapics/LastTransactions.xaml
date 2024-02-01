@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="RJAplicationWPF.Grapics.LastTransactions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RJAplicationWPF.Grapics"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             d:DesignHeight="450" d:DesignWidth="800" >
+
+    <UserControl.Resources>
+        <local:LastTransactions x:Key="IconColorConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <DockPanel>
+                <TextBlock Margin="20 20 0 0" FontSize="28"
+                   FontWeight="Normal"
+                   Foreground="{StaticResource plainTextColor1}"
+                   Text="Last transactions"
+                   HorizontalAlignment="Left" VerticalAlignment="Top" >
+
+                </TextBlock>
+                <TextBlock Margin="0 20 20 0" FontSize="25"
+                   FontWeight="Normal"
+                   Foreground="{StaticResource color3}"
+                   Text="See all"
+                   HorizontalAlignment="Right" VerticalAlignment="Top" >
+
+                </TextBlock>
+            </DockPanel>
+
+            <ListView x:Name="TransactionsListView"  SelectedItem="{Binding EditTransactions}" Margin="0 30 0 0" Background="Transparent" BorderBrush="Transparent">
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border x:Name="Border">
+                                        <Border x:Name="LeftBorder" Background="Transparent" BorderBrush="AliceBlue" BorderThickness="10,0,0,0">
+                                            <ContentPresenter  />
+                                        </Border>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <!-- Mostrar borda à esquerda ao ser selecionado -->
+                                            <Setter TargetName="LeftBorder" Property="BorderThickness" Value="5,0,0,0"/>
+                                            <!-- Cor desejada para seleção -->
+                                            <Setter TargetName="LeftBorder" Property="BorderBrush" Value="#FFC047"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                     
+                                            <Setter TargetName="LeftBorder" Property="BorderThickness" Value="5,0,0,0"/>
+                                            <!-- Cor desejada para hover -->
+                                            <Setter TargetName="LeftBorder" Property="BorderBrush" Value="#FB539B"/>
+
+                                            <!-- Mostrar borda à esquerda ao estar em hover -->
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="True"/>
+                                                <Condition Property="IsMouseOver" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="LeftBorder" Property="BorderThickness" Value="5,0,0,0"/>
+                                            <!-- Mostrar borda à esquerda quando estiver selecionado e em hover -->
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="False"/>
+                                                <Condition Property="IsMouseOver" Value="False"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="LeftBorder" Property="BorderThickness" Value="0"/>
+                                            <!-- Esconder a borda à esquerda em outros casos -->
+                                        </MultiTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="ListViewItem">
+                        <DockPanel Margin="5 0 0 0 "   >
+                            <StackPanel Style="{DynamicResource stackzin}" VerticalAlignment="Center">
+                                <StackPanel.Resources>
+                                    <Style x:Key="ColorIcon" TargetType="fa:IconImage" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=DeposityId}" Value="0">
+                                                <Setter Property="Foreground" Value="#FFC047"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=DeposityId}" Value="1">
+                                                <Setter Property="Foreground" Value="#FB539B"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <fa:IconImage Margin="10 0 0 0" Icon="Wallet" Style="{DynamicResource ColorIcon}" />
+                            </StackPanel>
+
+                            <StackPanel VerticalAlignment="Center"  Margin="10 0 0 0">
+                                <TextBlock  Text="{Binding DeposityName}" FontSize="18"  Foreground="{StaticResource plainTextColor1}" FontWeight="Medium"/>
+                                <TextBlock Text="{Binding Name}" FontSize="15" Foreground="{StaticResource plainTextColor3}" FontWeight="Medium"/>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center" Margin="200 0 0 20">
+                                <TextBlock Text="{Binding ValorPersonalizado}" FontSize="18" HorizontalAlignment="Right" Foreground="{StaticResource plainTextColor1}" FontWeight="Medium" />
+                                <TextBlock Text="{Binding HoraFormatada}" FontSize="14" Foreground="{StaticResource plainTextColor3}" FontWeight="Medium"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>

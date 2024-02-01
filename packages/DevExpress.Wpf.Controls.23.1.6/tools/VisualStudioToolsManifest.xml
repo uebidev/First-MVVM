@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FileList>
+  <File Reference="DevExpress.Xpf.Controls.v23.1.dll">
+    <ToolboxItems UIFramework="WPF" VSCategory="DX.23.1: Navigation &amp; Layout" BlendCategory="DX.23.1: Navigation &amp; Layout">
+      <Item Type="DevExpress.Xpf.WindowsUI.AppBar" />
+      <Item Type="DevExpress.Xpf.WindowsUI.HamburgerMenu" />
+      <Item Type="DevExpress.Xpf.WindowsUI.FlipView" />
+      <Item Type="DevExpress.Xpf.WindowsUI.NavigationFrame" />
+      <Item Type="DevExpress.Xpf.WindowsUI.PageAdornerControl" />
+      <Item Type="DevExpress.Xpf.WindowsUI.PageView" />
+      <Item Type="DevExpress.Xpf.WindowsUI.SlideView" />
+      <Item Type="DevExpress.Xpf.Navigation.OfficeNavigationBar" />
+      <Item Type="DevExpress.Xpf.Navigation.TileBar" />
+      <Item Type="DevExpress.Xpf.Navigation.TileNavPane" />
+      <Item Type="DevExpress.Xpf.Controls.Book" />
+      <Item Type="DevExpress.Xpf.Controls.BreadcrumbControl" />
+      <Item Type="DevExpress.Xpf.Controls.Wizard" />
+    </ToolboxItems>
+    <ToolboxItems UIFramework="WPF" VSCategory="DX.23.1: Common Controls" BlendCategory="DX.23.1: Common Controls">
+      <Item Type="DevExpress.Xpf.Controls.StepProgressBar" />
+    </ToolboxItems>
+  </File>
+</FileList>

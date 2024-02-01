@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="RJAplicationWPF.Grapics.GraphicLineCross"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+             xmlns:local="clr-namespace:RJAplicationWPF.Grapics"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <dxc:ChartControl Background="{x:Null}" BorderBrush="Transparent">
+            <dxc:ChartControl.Palette>
+                <dxc:CustomPalette>
+                    <dxc:CustomPalette.Colors>
+                        <Color>#4ADAEC</Color>
+                        <Color>#FB539B</Color>
+                        <Color>#784DFD</Color>
+                    </dxc:CustomPalette.Colors>
+                </dxc:CustomPalette>
+            </dxc:ChartControl.Palette>
+            
+            <!--Group Header Pattern-->
+            <dxc:ChartControl.CrosshairOptions>
+                <dxc:CrosshairOptions GroupHeaderPattern="Year: {A}"
+                                      ShowArgumentLabels="True" ShowArgumentLine="True"
+                                      ShowValueLabels="True" ShowValueLine="True"/>
+            </dxc:ChartControl.CrosshairOptions>
+            <dxc:ChartControl.Titles>
+                <dxc:Title Content="Line Chart Title" Foreground="{StaticResource titleColor3}" FontWeight="Bold">
+                    
+                </dxc:Title>
+            </dxc:ChartControl.Titles>
+                
+            <dxc:ChartControl.Diagram>
+                <dxc:XYDiagram2D>
+                    <dxc:XYDiagram2D.DefaultPane>
+                        <dxc:Pane DomainBrush="#200F53"/>
+                    </dxc:XYDiagram2D.DefaultPane>
+                    
+                    <!--CrossHairAxisLabelPattern-->
+                    <dxc:XYDiagram2D.AxisX>
+                        <dxc:AxisX2D Visible="True" Interlaced="False">
+                            <!--#region Estilizar esse nome da misera que fica embaixo da timeline -->
+                            <dxc:AxisX2D.CrosshairLabelTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Border BorderThickness="0.9">
+                                            <Border.Background>
+                                                <SolidColorBrush Color="Transparent" />
+                                            </Border.Background>
+                                            <Label 
+                                                Content="{Binding Path=Text}" 
+                                                Padding="12,1,5,1.5" 
+                                                Foreground="White" 
+                                                Background="#FFC047"  
+                                                FontWeight="Bold"
+                                                FontSize="14"/>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </dxc:AxisX2D.CrosshairLabelTemplate>
+                            <!--Configurações da Label embaixo da timeline-->
+                            <dxc:AxisX2D.Label>
+                                <dxc:AxisLabel 
+                                               Background="#EF6C96"   
+                                               FontSize="14" 
+                                               FontStyle="Italic" 
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               TextPattern="{}{V} year"/>
+                            </dxc:AxisX2D.Label>
+                            <!--#endregion-->
+
+                            <dxc:AxisX2D.CrosshairAxisLabelOptions>
+                                <dxc:CrosshairAxisLabelOptions Pattern="Year: {A:F0}"/>
+                            </dxc:AxisX2D.CrosshairAxisLabelOptions>
+                        </dxc:AxisX2D>
+                    </dxc:XYDiagram2D.AxisX>
+
+
+                    <dxc:XYDiagram2D.AxisY>
+                        <dxc:AxisY2D Visible="True" Interlaced="True" InterlacedBrush="#200E53"  GridLinesBrush="#CF8AE3" >
+                            <!--Configurações da Label embaixo da timeline-->
+                            <dxc:AxisY2D.Label>
+                                <dxc:AxisLabel 
+                             Background="#7FA1FA"   
+                             FontSize="14" 
+                             FontStyle="Italic" 
+                             FontWeight="Bold"
+                             Foreground="White"
+                             TextPattern="{}{V} year"/>
+                            </dxc:AxisY2D.Label>
+                            <!--#endregion-->
+
+                            <dxc:AxisY2D.CrosshairAxisLabelOptions>
+                                <dxc:CrosshairAxisLabelOptions Pattern="Year: {A:F0}"/>
+                            </dxc:AxisY2D.CrosshairAxisLabelOptions>
+                        </dxc:AxisY2D>
+                    </dxc:XYDiagram2D.AxisY>
+
+
+                    <dxc:XYDiagram2D.Series>
+                        
+                        <dxc:LineSeries2D DisplayName="Europe" 
+                                          Visible="True"
+                                          ColorEach="True"
+                                          CrosshairLabelPattern="{}{S} population: {V}">
+                           
+                            <dxc:LineSeries2D.Points>
+                                <dxc:SeriesPoint Argument="1950" Value="546" />
+                                <dxc:SeriesPoint Argument="1960" Value="605" />
+                                <dxc:SeriesPoint Argument="1970" Value="656" />
+                                <dxc:SeriesPoint Argument="1980" Value="694" />
+                                <dxc:SeriesPoint Argument="1990" Value="721" />
+                                <dxc:SeriesPoint Argument="2000" Value="730" />
+                                <dxc:SeriesPoint Argument="2010" Value="728" />
+                                <dxc:SeriesPoint Argument="2020" Value="721" />
+                                <dxc:SeriesPoint Argument="2030" Value="704" />
+                                <dxc:SeriesPoint Argument="2040" Value="680" />
+                                <dxc:SeriesPoint Argument="2050" Value="650" />
+                            </dxc:LineSeries2D.Points>
+
+                            
+                            
+                        </dxc:LineSeries2D>
+                        <dxc:LineSeries2D  DisplayName="Americas" 
+                                           CrosshairLabelPattern="{}{S} population: {V} ">
+                            <dxc:LineSeries2D.Points>
+                                <dxc:SeriesPoint Argument="1950" Value="332" />
+                                <dxc:SeriesPoint Argument="1960" Value="417" />
+                                <dxc:SeriesPoint Argument="1970" Value="513" />
+                                <dxc:SeriesPoint Argument="1980" Value="614" />
+                                <dxc:SeriesPoint Argument="1990" Value="721" />
+                                <dxc:SeriesPoint Argument="2000" Value="836" />
+                                <dxc:SeriesPoint Argument="2010" Value="935" />
+                                <dxc:SeriesPoint Argument="2020" Value="1027" />
+                                <dxc:SeriesPoint Argument="2030" Value="1110" />
+                                <dxc:SeriesPoint Argument="2040" Value="1178" />
+                                <dxc:SeriesPoint Argument="2050" Value="1231" />
+                            </dxc:LineSeries2D.Points>
+                        </dxc:LineSeries2D>
+
+                        <dxc:LineSeries2D  DisplayName="Asia" 
+                    CrosshairLabelPattern="{}{S} population: {V} ">
+                            <dxc:LineSeries2D.Points>
+                                <dxc:SeriesPoint Argument="1950" Value="132"  />
+                                <dxc:SeriesPoint Argument="1960" Value="217" />
+                                <dxc:SeriesPoint Argument="1970" Value="313" />
+                                <dxc:SeriesPoint Argument="1980" Value="414" />
+                                <dxc:SeriesPoint Argument="1990" Value="521" />
+                                <dxc:SeriesPoint Argument="2000" Value="636" />
+                                <dxc:SeriesPoint Argument="2010" Value="735" />
+                                <dxc:SeriesPoint Argument="2020" Value="860" />
+                                <dxc:SeriesPoint Argument="2030" Value="980" />
+                                <dxc:SeriesPoint Argument="2040" Value="1078" />
+                                <dxc:SeriesPoint Argument="2050" Value="1131" />
+                            </dxc:LineSeries2D.Points>
+                        </dxc:LineSeries2D>
+                    </dxc:XYDiagram2D.Series>
+                    
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl.Diagram>
+        </dxc:ChartControl>   
+    </Grid>
+</UserControl>
